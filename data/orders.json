@@ -1,0 +1,354 @@
+[
+  {
+    "orderId": "FB-20261018-89JU",
+    "customer": {
+      "name": "B2G1 Tester",
+      "mobile": "9988776655",
+      "address": "Friends Hostel, Church Street, Bengaluru 560001",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "classic-chill",
+        "productName": "Classic Chill",
+        "productImage": "/images/creamy-milk-cold-coffee.jpg",
+        "basePrice": 99,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 99
+        },
+        "unitPricePaise": 9900,
+        "quantity": 3,
+        "lineTotalPaise": 29700
+      }
+    ],
+    "subtotalPaise": 29700,
+    "discountPaise": 9900,
+    "promoCode": "B2G1FREE",
+    "deliveryFeePaise": 4000,
+    "taxPaise": 990,
+    "totalPaise": 24790,
+    "paymentMethod": "online",
+    "paymentStatus": "pending",
+    "orderStatus": "created",
+    "paymentDetails": {
+      "gateway": "mock"
+    },
+    "createdAt": "2026-10-18T15:10:00.215Z",
+    "updatedAt": "2026-10-18T15:10:00.226Z"
+  },
+  {
+    "orderId": "FB-20261018-BODU",
+    "customer": {
+      "name": "Offer Tester",
+      "mobile": "9876543210",
+      "address": "Coffee Tasting Lab, Residency Road, Bengaluru 560025",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "vanilla-dream",
+        "productName": "Vanilla Dream",
+        "productImage": "/images/vanilla-dream.jpg",
+        "basePrice": 119,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 119
+        },
+        "unitPricePaise": 11900,
+        "quantity": 2,
+        "lineTotalPaise": 23800
+      }
+    ],
+    "subtotalPaise": 23800,
+    "discountPaise": 5000,
+    "promoCode": "BROWNIE50",
+    "deliveryFeePaise": 4000,
+    "taxPaise": 940,
+    "totalPaise": 23740,
+    "paymentMethod": "online",
+    "paymentStatus": "pending",
+    "orderStatus": "created",
+    "paymentDetails": {
+      "gateway": "mock"
+    },
+    "createdAt": "2026-10-18T15:09:57.153Z",
+    "updatedAt": "2026-10-18T15:09:57.298Z"
+  },
+  {
+    "orderId": "FB-20261018-IATB",
+    "customer": {
+      "name": "Pooja Hegde",
+      "mobile": "9845012345",
+      "address": "B-204, Green Glen Layout, Bellandur, Bengaluru 560103",
+      "instructions": "Please ring the bell twice and leave package at door."
+    },
+    "items": [
+      {
+        "productId": "vanilla-dream",
+        "productName": "Vanilla Dream",
+        "productImage": "/images/vanilla-dream.jpg",
+        "basePrice": 119,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Less",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 119
+        },
+        "unitPricePaise": 11900,
+        "quantity": 1,
+        "lineTotalPaise": 11900
+      }
+    ],
+    "subtotalPaise": 11900,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 595,
+    "totalPaise": 16495,
+    "paymentMethod": "cod",
+    "paymentStatus": "cod_pending",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "cod",
+      "transactionId": "cod_FB-20261018-IATB"
+    },
+    "createdAt": "2026-10-18T14:36:38.004Z",
+    "updatedAt": "2026-10-18T14:36:38.010Z"
+  },
+  {
+    "orderId": "FB-20261018-X3X7",
+    "customer": {
+      "name": "Rohan Varma",
+      "mobile": "9123456789",
+      "address": "Flat 402, Highrise Apartments, Indiranagar, Bengaluru 560038",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "caramel-bliss",
+        "productName": "Caramel Bliss",
+        "productImage": "/images/iced-caramel-latte.jpg",
+        "basePrice": 129,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 129
+        },
+        "unitPricePaise": 12900,
+        "quantity": 1,
+        "lineTotalPaise": 12900
+      }
+    ],
+    "subtotalPaise": 12900,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 645,
+    "totalPaise": 17545,
+    "paymentMethod": "online",
+    "paymentStatus": "paid",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "mock",
+      "failureReason": "Card declined by issuing bank (Mock Failure)",
+      "transactionId": "pay_mock_1792334197889_zhpy7",
+      "paymentSignature": "2174958e62a80b3ee4ad8ef015db985ae76218a5c41884b93e01b1275c30568e",
+      "paidAt": "2026-10-18T14:36:37.939Z"
+    },
+    "createdAt": "2026-10-18T14:36:37.643Z",
+    "updatedAt": "2026-10-18T14:36:37.952Z"
+  },
+  {
+    "orderId": "FB-20261018-XWR1",
+    "customer": {
+      "name": "Security Auditor",
+      "mobile": "9876543210",
+      "address": "Cyber Security Lab, Innovation Tower, Bengaluru 560001",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "choco-mocha",
+        "productName": "Choco Mocha",
+        "productImage": "/images/choco-mocha.jpg",
+        "basePrice": 149,
+        "customization": {
+          "size": "Large",
+          "milk": "Oat Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "unitPrice": 204,
+          "customizationPrice": 55
+        },
+        "unitPricePaise": 20400,
+        "quantity": 1,
+        "lineTotalPaise": 20400
+      }
+    ],
+    "subtotalPaise": 20400,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 1020,
+    "totalPaise": 25420,
+    "paymentMethod": "online",
+    "paymentStatus": "paid",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "mock",
+      "transactionId": "pay_mock_1792334197275_oua5l",
+      "paymentSignature": "21a23d018fad58a81cbc624a5ff84a2bb49edb67cef5156d7f02a12394b81994",
+      "paidAt": "2026-10-18T14:36:37.352Z"
+    },
+    "createdAt": "2026-10-18T14:36:31.721Z",
+    "updatedAt": "2026-10-18T14:36:37.361Z"
+  },
+  {
+    "orderId": "FB-20261018-9MCB",
+    "customer": {
+      "name": "Pooja Hegde",
+      "mobile": "9845012345",
+      "address": "B-204, Green Glen Layout, Bellandur, Bengaluru 560103",
+      "instructions": "Please ring the bell twice and leave package at door."
+    },
+    "items": [
+      {
+        "productId": "vanilla-dream",
+        "productName": "Vanilla Dream",
+        "productImage": "/images/vanilla-dream.jpg",
+        "basePrice": 119,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Less",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 119
+        },
+        "unitPricePaise": 11900,
+        "quantity": 1,
+        "lineTotalPaise": 11900
+      }
+    ],
+    "subtotalPaise": 11900,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 595,
+    "totalPaise": 16495,
+    "paymentMethod": "cod",
+    "paymentStatus": "cod_pending",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "cod",
+      "transactionId": "cod_FB-20261018-9MCB"
+    },
+    "createdAt": "2026-10-18T14:24:40.573Z",
+    "updatedAt": "2026-10-18T14:24:40.579Z"
+  },
+  {
+    "orderId": "FB-20261018-7TFG",
+    "customer": {
+      "name": "Rohan Varma",
+      "mobile": "9123456789",
+      "address": "Flat 402, Highrise Apartments, Indiranagar, Bengaluru 560038",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "caramel-bliss",
+        "productName": "Caramel Bliss",
+        "productImage": "/images/iced-caramel-latte.jpg",
+        "basePrice": 129,
+        "customization": {
+          "size": "Regular",
+          "milk": "Regular Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "customizationPrice": 0,
+          "unitPrice": 129
+        },
+        "unitPricePaise": 12900,
+        "quantity": 1,
+        "lineTotalPaise": 12900
+      }
+    ],
+    "subtotalPaise": 12900,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 645,
+    "totalPaise": 17545,
+    "paymentMethod": "online",
+    "paymentStatus": "paid",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "mock",
+      "failureReason": "Card declined by issuing bank (Mock Failure)",
+      "transactionId": "pay_mock_1792333480475_gwtkj",
+      "paymentSignature": "908103a8c0b4e0bd728287d9d98266110faee9faf33cf95e0cbe43e0e1efb6fb",
+      "paidAt": "2026-10-18T14:24:40.516Z"
+    },
+    "createdAt": "2026-10-18T14:24:40.245Z",
+    "updatedAt": "2026-10-18T14:24:40.525Z"
+  },
+  {
+    "orderId": "FB-20261018-IA82",
+    "customer": {
+      "name": "Security Auditor",
+      "mobile": "9876543210",
+      "address": "Cyber Security Lab, Innovation Tower, Bengaluru 560001",
+      "instructions": ""
+    },
+    "items": [
+      {
+        "productId": "choco-mocha",
+        "productName": "Choco Mocha",
+        "productImage": "/images/choco-mocha.jpg",
+        "basePrice": 149,
+        "customization": {
+          "size": "Large",
+          "milk": "Oat Milk",
+          "sweetness": "Regular",
+          "toppings": [],
+          "unitPrice": 204,
+          "customizationPrice": 55
+        },
+        "unitPricePaise": 20400,
+        "quantity": 1,
+        "lineTotalPaise": 20400
+      }
+    ],
+    "subtotalPaise": 20400,
+    "discountPaise": 0,
+    "promoCode": null,
+    "deliveryFeePaise": 4000,
+    "taxPaise": 1020,
+    "totalPaise": 25420,
+    "paymentMethod": "online",
+    "paymentStatus": "paid",
+    "orderStatus": "confirmed",
+    "paymentDetails": {
+      "gateway": "mock",
+      "transactionId": "pay_mock_1792333479895_d7rks",
+      "paymentSignature": "cdffbf1deebbbcd60b8f499f1751a1e5c70a1a81fd328287bdab121c6db94284",
+      "paidAt": "2026-10-18T14:24:39.959Z"
+    },
+    "createdAt": "2026-10-18T14:24:01.743Z",
+    "updatedAt": "2026-10-18T14:24:39.969Z"
+  }
+]

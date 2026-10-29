@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-playfair), "Georgia", serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+
+  /* Primary Brand Colors */
+  --color-cream: #f6f0e7;
+  --color-cream-light: #fbf8f3;
+  --color-cream-dark: #eae0d0;
+
+  --color-chocolate: #3b241a;
+  --color-chocolate-dark: #271710;
+  --color-chocolate-light: #523427;
+
+  --color-coffee: #6f4935;
+  --color-coffee-dark: #583726;
+  --color-coffee-light: #8a5d44;
+
+  --color-caramel: #c58a4a;
+  --color-caramel-hover: #b27738;
+  --color-caramel-light: #dca974;
+  --color-caramel-subtle: #f8efe5;
+
+  --color-card: #ffffff;
+
+  /* Custom Warm Diffused Shadows */
+  --shadow-warm-sm: 0 1px 3px 0 rgba(59, 36, 26, 0.05), 0 1px 2px -1px rgba(59, 36, 26, 0.05);
+  --shadow-warm-md: 0 6px 16px -2px rgba(59, 36, 26, 0.07), 0 2px 6px -2px rgba(59, 36, 26, 0.04);
+  --shadow-warm-lg: 0 14px 28px -4px rgba(59, 36, 26, 0.09), 0 4px 12px -4px rgba(59, 36, 26, 0.04);
+  --shadow-warm-xl: 0 24px 38px -8px rgba(59, 36, 26, 0.12);
+}
+
+:root {
+  --bg-page: #f6f0e7;
+  --text-primary: #3b241a;
+  --text-secondary: #6f4935;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f6f0e7;
+  color: #3b241a;
+}
+
+body {
+  background-color: #f6f0e7;
+  color: #3b241a;
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: var(--font-playfair), "Georgia", serif;
+}
+
+.font-sans {
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+/* Subtle Warm Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f6f0e7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c58a4a;
+  border-radius: 9999px;
+  border: 2px solid #f6f0e7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6f4935;
+}

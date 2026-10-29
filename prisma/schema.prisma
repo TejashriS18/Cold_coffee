@@ -1,0 +1,269 @@
+// Prisma Schema for FROST & BEAN Backend
+// Database Provider: PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum CustomizationType {
+  SIZE
+  MILK
+  SWEETNESS
+  TOPPING
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  MANAGER
+  BARISTA
+}
+
+enum PromoType {
+  PERCENTAGE
+  FIXED
+  FREE_SHIPPING
+}
+
+enum OrderPaymentMethod {
+  ONLINE
+  COD
+}
+
+enum OrderPaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  COD_PENDING
+}
+
+enum OrderLifecycleStatus {
+  CREATED
+  CONFIRMED
+  PREPARING
+  DELIVERED
+  CANCELLED
+  PAYMENT_FAILED
+}
+
+enum PaymentRecordStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  COD_PENDING
+}
+
+model Category {
+  id           String    @id @default(cuid())
+  name         String    @unique
+  slug         String    @unique
+  description  String?
+  displayOrder Int       @default(0)
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  products     Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id               String                 @id // e.g. "classic-chill" or cuid
+  slug             String                 @unique
+  name             String
+  tagline          String
+  description      String                 @db.Text
+  price            Float                  // In INR (e.g. 99)
+  pricePaise       Int                    // In paise (e.g. 9900)
+  origin           String
+  categoryId       String
+  category         Category               @relation(fields: [categoryId], references: [id])
+  roastLevel       String
+  brewMethod       String
+  notes            String[]               // Native PostgreSQL string array
+  intensity        Int                    @default(3)
+  isBestSeller     Boolean                @default(false)
+  isLimitedRelease Boolean                @default(false)
+  image            String?
+  accentColor      String?
+  isActive         Boolean                @default(true)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  customizationOptions CustomizationOption[]
+  inventory            Inventory?
+  orderItems           OrderItem[]
+
+  @@index([categoryId])
+  @@index([slug])
+  @@map("products")
+}
+
+model CustomizationOption {
+  id           String            @id @default(cuid())
+  type         CustomizationType
+  name         String            // e.g. "Large (16 oz)", "Creamy Oat Milk"
+  code         String            // e.g. "Large", "Oat Milk"
+  price        Float             @default(0) // In INR (e.g. 25)
+  pricePaise   Int               @default(0) // In paise (e.g. 2500)
+  isAvailable  Boolean           @default(true)
+  displayOrder Int               @default(0)
+  productId    String?           // Nullable: applies globally if null, or specific to product
+  product      Product?          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@index([type])
+  @@index([productId])
+  @@map("customization_options")
+}
+
+model Customer {
+  id           String    @id @default(cuid())
+  name         String
+  email        String?   @unique
+  mobile       String
+  passwordHash String?   // Sensitive: never exposed in API responses
+  address      String?   @db.Text
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  orders       Order[]
+
+  @@index([mobile])
+  @@map("customers")
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String    // Sensitive: hashed with bcrypt
+  role         AdminRole @default(ADMIN)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([email])
+  @@map("admin_users")
+}
+
+model PromotionalOffer {
+  id               String    @id @default(cuid())
+  code             String    @unique
+  description      String
+  discountType     PromoType
+  discountValue    Int       // e.g. 20 (percent) or 5000 (paise)
+  minOrderPaise    Int?      @default(0)
+  minItems         Int?      @default(0)
+  maxDiscountPaise Int?
+  usageLimit       Int?
+  timesUsed        Int       @default(0)
+  validFrom        DateTime  @default(now())
+  validTo          DateTime?
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  orders           Order[]
+
+  @@index([code])
+  @@map("promotional_offers")
+}
+
+model Inventory {
+  id                String   @id @default(cuid())
+  productId         String   @unique
+  product           Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  stockCount        Int      @default(100)
+  reservedCount     Int      @default(0)
+  lowStockThreshold Int      @default(10)
+  isAvailable       Boolean  @default(true)
+  lastRestockedAt   DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("inventory")
+}
+
+model Order {
+  id                   String               @id @default(cuid())
+  orderNumber          String               @unique // Human-friendly order reference e.g. FB-20261019-XXXX
+  idempotencyKey       String?              @unique // Prevents duplicate order placement
+  customerId           String?
+  customer             Customer?            @relation(fields: [customerId], references: [id])
+  customerName         String
+  customerMobile       String
+  customerAddress      String               @db.Text
+  deliveryInstructions String?              @db.Text
+  subtotalPaise        Int
+  discountPaise        Int                  @default(0)
+  deliveryFeePaise     Int                  @default(0)
+  taxPaise             Int                  @default(0)
+  totalPaise           Int
+  promoCode            String?
+  promoOfferId         String?
+  promoOffer           PromotionalOffer?    @relation(fields: [promoOfferId], references: [id])
+  paymentMethod        OrderPaymentMethod
+  paymentStatus        OrderPaymentStatus   @default(PENDING)
+  orderStatus          OrderLifecycleStatus @default(CREATED)
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  items                OrderItem[]
+  payments             Payment[]
+
+  @@index([orderNumber])
+  @@index([customerId])
+  @@index([orderStatus])
+  @@index([paymentStatus])
+  @@map("orders")
+}
+
+model OrderItem {
+  id                String   @id @default(cuid())
+  orderId           String
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId         String
+  product           Product  @relation(fields: [productId], references: [id])
+  productName       String
+  productImage      String?
+  basePricePaise    Int
+  customizationJson Json     // Customization selection snapshot
+  unitPricePaise    Int
+  quantity          Int
+  lineTotalPaise    Int
+  createdAt         DateTime @default(now())
+
+  @@index([orderId])
+  @@index([productId])
+  @@map("order_items")
+}
+
+model Payment {
+  id                   String              @id @default(cuid())
+  orderId              String
+  order                Order               @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  gateway              String              // "mock", "razorpay", "cod"
+  transactionReference String?             @unique // Gateway reference or transaction ID (NO card details!)
+  paymentSignature     String?
+  amountPaise          Int
+  status               PaymentRecordStatus @default(PENDING)
+  failureReason        String?
+  verifiedAt           DateTime?
+  rawMetadata          Json?               // Sanitized webhook/gateway response metadata
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+
+  @@index([orderId])
+  @@index([transactionReference])
+  @@map("payments")
+}
