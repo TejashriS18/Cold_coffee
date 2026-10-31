@@ -4,9 +4,6 @@ import { prisma } from "@/lib/prisma";
 import { AdminRole, OrderLifecycleStatus, OrderPaymentStatus } from "@prisma/client";
 import { logger } from "@/lib/logger";
 
-export const dynamic = "force-dynamic";
-
-
 export async function GET(req: Request) {
   try {
     const { errorResponse } = await authenticateRequest(req, [

@@ -3,9 +3,6 @@ import { authenticateRequest } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 
-export const dynamic = "force-dynamic";
-
-
 export async function GET(req: Request) {
   try {
     const { user, errorResponse } = await authenticateRequest(req, ["CUSTOMER"]);
